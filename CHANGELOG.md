@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Storybook 10 compatibility: switched from automatic to classic JSX transform to resolve React 19 runtime errors
+
+## [0.1.1] - 2026-01-20
+
+### Fixed
+
+- Improved e2e Storybook runner reliability
+
+### Changed
+
+- Added screenshots and improved README documentation
+
 ## [0.1.0] - 2025-01-20
 
 ### Added
