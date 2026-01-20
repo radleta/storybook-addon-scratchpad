@@ -135,6 +135,10 @@ async function main() {
   console.log(`\nPress Ctrl+C to stop Storybook\n`);
 
   // Handle child process exit
+  // Note: We intentionally do NOT delete the PID file here.
+  // If the process exits unexpectedly (e.g., background task termination),
+  // the PID file allows the next run to find and kill any orphaned processes.
+  // The PID file is only deleted after successfully killing the process on next start.
   child.on('exit', (code, signal) => {
     if (signal) {
       console.log(`\nStorybook ${version} killed by signal: ${signal}`);
@@ -142,11 +146,6 @@ async function main() {
       console.error(`\nStorybook ${version} exited with error code: ${code}`);
     } else {
       console.log(`\nStorybook ${version} exited`);
-    }
-    try {
-      unlinkSync(pidFile);
-    } catch {
-      // Ignore
     }
     process.exit(code || 0);
   });
