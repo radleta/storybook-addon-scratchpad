@@ -7,10 +7,14 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const version = process.argv[2];
+const useNpm = process.argv.includes('--npm');
 const isWindows = process.platform === 'win32';
 
 if (!version || !['8', '9', '10'].includes(version)) {
-  console.error('Usage: node scripts/run-storybook.js <8|9|10>');
+  console.error('Usage: node scripts/run-storybook.js <8|9|10> [--npm]');
+  console.error('');
+  console.error('Options:');
+  console.error('  --npm    Install addon from npm registry instead of local build');
   process.exit(1);
 }
 
@@ -35,6 +39,22 @@ async function main() {
     console.error(`Error: Dependencies not installed for Storybook ${version}`);
     console.error(`Run: npm run e2e:install:${version}`);
     process.exit(1);
+  }
+
+  // If --npm flag, install addon from npm registry instead of local
+  if (useNpm) {
+    console.log(`Installing storybook-addon-scratchpad from npm registry...`);
+    try {
+      execSync('npm install storybook-addon-scratchpad@latest', {
+        cwd,
+        stdio: 'inherit',
+      });
+      console.log(`Successfully installed from npm registry\n`);
+    } catch (err) {
+      console.error(`Error: Failed to install from npm registry`);
+      console.error(`  ${err.message}`);
+      process.exit(1);
+    }
   }
 
   // Kill existing process if PID file exists
@@ -74,7 +94,8 @@ async function main() {
     }
   }
 
-  console.log(`Starting Storybook ${version} on port ${port}...`);
+  const mode = useNpm ? 'npm registry' : 'local build';
+  console.log(`Starting Storybook ${version} on port ${port} (addon from ${mode})...`);
   console.log(`Working directory: ${cwd}`);
 
   // Use shell string on Windows to avoid DEP0190 warning about shell + args
