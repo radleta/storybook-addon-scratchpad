@@ -1,6 +1,20 @@
 # storybook-addon-scratchpad
 
-A Storybook addon for jotting quick notes and feedback on stories, with auto-save and markdown export.
+A lightweight Storybook addon for capturing component feedback during design reviews. Take notes on each story, then copy everything as markdown to paste into your workflow.
+
+![Scratchpad panel showing notes on a Button component](docs/screenshot-panel-cropped.png)
+
+## Why This Exists
+
+When doing component design reviews—especially with AI coding agents—I needed a way to jot down feedback as I clicked through stories, then paste all my notes back into chat for fixes. Every existing solution required external services, accounts, or backend setup.
+
+This addon is intentionally lo-fi: notes save to localStorage, export as markdown, and that's it. No hosting, no accounts, no complexity. Just a scratchpad that lives in your Storybook.
+
+**The workflow:**
+1. Review components in Storybook, noting issues as you go
+2. Click "Copy All" to get markdown-formatted feedback
+3. Paste into your AI agent, issue tracker, or team chat
+4. Fixes get made, repeat
 
 ## Features
 
@@ -39,6 +53,8 @@ That's it! A "Scratchpad" panel will appear in your Storybook's addon panel.
 4. Navigate to other stories - each has its own notes
 5. Click "Copy All" to export all notes as markdown
 
+![Scratchpad addon in Storybook interface](docs/screenshot-panel.png)
+
 ## Panel Actions
 
 | Action | Description |
@@ -49,16 +65,18 @@ That's it! A "Scratchpad" panel will appear in your Storybook's addon panel.
 
 ## Exported Markdown Format
 
-When you click "Copy All", notes are formatted as:
+When you click "Copy All", notes are formatted for easy pasting:
 
 ```markdown
 ## Storybook Feedback
 
 ### components-button--primary
-Button looks great but needs hover state
+- hover state is missing
+- focus ring not visible enough for a11y
 
 ### components-card--default
-Consider adding shadow variant
+- add a subtle box-shadow variant
+- padding feels tight on mobile
 ```
 
 ## Compatibility
@@ -69,10 +87,10 @@ Consider adding shadow variant
 
 ## Use Cases
 
-- **Design reviews** - Jot notes while reviewing component designs
-- **QA feedback** - Document issues found during testing
-- **Documentation planning** - Track what needs to be documented
-- **Team collaboration** - Copy and share feedback via chat/issues
+- **AI agent workflows** - Review components, collect feedback, paste to your coding agent for fixes
+- **Design reviews** - Capture feedback during design critiques without leaving Storybook
+- **QA testing** - Document issues as you find them, export for bug tracking
+- **Async collaboration** - Share component feedback via Slack, GitHub issues, or PRs
 
 ## Development
 
