@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-scratchpad",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Storybook addon for jotting quick notes and feedback on stories, with auto-save and markdown export.",
   "type": "module",
   "main": "dist/manager.js",
