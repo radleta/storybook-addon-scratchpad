@@ -1,0 +1,22 @@
+{
+  "name": "e2e-storybook-8",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6008",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.0",
+    "@storybook/react": "^8.4.0",
+    "@storybook/react-vite": "^8.4.0",
+    "storybook": "^8.4.0",
+    "storybook-addon-scratchpad": "file:../..",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}
