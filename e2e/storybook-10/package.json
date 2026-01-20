@@ -1,0 +1,21 @@
+{
+  "name": "e2e-storybook-10",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6010",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@storybook/react": "^10.0.0",
+    "@storybook/react-vite": "^10.0.0",
+    "storybook": "^10.0.0",
+    "storybook-addon-scratchpad": "file:../..",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}
