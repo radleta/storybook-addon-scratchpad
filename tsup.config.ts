@@ -6,8 +6,10 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom', 'storybook'],
+  external: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'storybook'],
   esbuildOptions(options) {
-    options.jsx = 'automatic';
+    options.jsx = 'transform';
+    options.jsxFactory = 'React.createElement';
+    options.jsxFragment = 'React.Fragment';
   },
 });
