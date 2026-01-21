@@ -50,7 +50,7 @@
     "e2e:restore:10": "cd e2e/storybook-10 && npm install storybook-addon-scratchpad@file:../..",
     "e2e:restore:all": "npm run e2e:restore:8 && npm run e2e:restore:9 && npm run e2e:restore:10",
     "preversion": "npm run validate",
-    "version": "node scripts/update-changelog.js $npm_package_version && git add CHANGELOG.md",
+    "version": "version-changelog CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run validate && npm run build",
     "prepare": "husky"
