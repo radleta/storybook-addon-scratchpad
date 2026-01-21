@@ -121,12 +121,19 @@ e2e/
 └── storybook-10/       # Storybook 10.x environment
 ```
 
-**Quick start:**
+**Quick start (local development):**
 
 ```bash
 npm run build           # Build addon first
 npm run e2e:install:8   # Install deps for Storybook 8
-npm run e2e:8           # Run Storybook 8 on port 16008
+npm run e2e:8           # Run Storybook 8 on port 16008 (uses local build)
+```
+
+**Smoke testing (npm registry):**
+
+```bash
+npm run e2e:8:npm       # Install from npm registry and run Storybook 8
+npm run e2e:restore:8   # Restore to local build after testing
 ```
 
 **Port configuration:** Customize via `.env` (copy from `.env.example`):
@@ -155,11 +162,14 @@ npm run e2e:8           # Run Storybook 8 on port 16008
 | `npm test` | Run tests |
 | `npm run validate` | lint + typecheck + test |
 | `npm run release:prepare` | Full pre-release validation |
-| `npm run e2e:8` | Run Storybook 8 (auto-restarts) |
-| `npm run e2e:9` | Run Storybook 9 (auto-restarts) |
-| `npm run e2e:10` | Run Storybook 10 (auto-restarts) |
-| `npm run e2e:install:8` | Install Storybook 8 e2e deps |
+| `npm run e2e:8` | Run Storybook 8 with local build |
+| `npm run e2e:9` | Run Storybook 9 with local build |
+| `npm run e2e:10` | Run Storybook 10 with local build |
+| `npm run e2e:8:npm` | Run Storybook 8 with npm package (smoke test) |
+| `npm run e2e:9:npm` | Run Storybook 9 with npm package (smoke test) |
+| `npm run e2e:10:npm` | Run Storybook 10 with npm package (smoke test) |
 | `npm run e2e:install:all` | Install all e2e deps |
+| `npm run e2e:restore:all` | Restore all e2e envs to local build |
 
 ## Key Metadata
 
